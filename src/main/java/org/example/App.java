@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.example.Logic.Task;
 
 import java.io.IOException;
 
@@ -21,7 +22,7 @@ public class App extends Application {
 
     //this is a javafx class that represents the state of a window (everything in a window)
     private static Scene scene;
-
+    private static Stage _stage;
     /**
      *
      * @param stage Stage is a javafx class that represents a window, a scene goes in a stage and the scene dictates the content
@@ -44,11 +45,26 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //scene can be generated a few ways but in this case we are loading it from an fxml file
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        //scene = new Scene(loadFXML("primary"), 640, 480);
+        initCreateTask(new Task());
         //the stage is what is shown so the scene needs to be added to the stage
         stage.setScene(scene);
         //this makes the stage window visible once its set up
         stage.show();
+        _stage = stage;
+    }
+
+    public static void switchScene(Scene newScene){
+        _stage.setScene(newScene);
+    }
+
+    private void initCreateTask(Task task) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("CreateTask" + ".fxml"));
+        Parent root = fxmlLoader.load();
+        CreateTaskController controller = fxmlLoader.getController();
+        scene = new Scene(root, 640, 480);
+        controller.setSelf(scene);
+        controller.initTask(task);
     }
 
     //this method has the static keyword, google this its kinda important

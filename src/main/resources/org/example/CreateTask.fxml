@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CreateTaskController">
+   <children>
+      <Label layoutX="235.0" layoutY="25.0" text="yea we making a task bo" />
+      <Label layoutX="113.0" layoutY="76.0" text="Give a description" />
+      <TextField fx:id="_description" layoutX="86.0" layoutY="107.0" text="put description here yo" />
+      <DatePicker fx:id="_deadline" layoutX="74.0" layoutY="188.0" />
+      <Label layoutX="121.0" layoutY="158.0" text="Pick a deadline" />
+      <Label layoutX="454.0" layoutY="76.0" text="SubTasks" />
+      <ListView fx:id="_subTaskList" layoutX="379.0" layoutY="101.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="542.0" layoutY="308.0" mnemonicParsing="false" onAction="#newSubTask" text="+" />
+      <Button layoutX="224.0" layoutY="354.0" mnemonicParsing="false" onAction="#done" text="Yea done what a sick task" />
+   </children>
+</AnchorPane>
